@@ -28,10 +28,13 @@ public class ManejoArchivos {
 			//Creo el competidor i...
 			Competidor competidor = new Competidor(i);
 			
-			//... y le agrego sus lanzamientos
+			//... le agrego sus lanzamientos...
 			competidor.addLanzamiento(lanzamiento1);
 			competidor.addLanzamiento(lanzamiento2);
 			competidor.addLanzamiento(lanzamiento3);
+			
+			//... y calculo su distancia total alcanzada con los lanzamientos
+			competidor.setDistanciaTotalLanzamientos(competidor.obtenerDistanciaTotal());
 			
 			//Finalmente, añado el competidor a la lista de competidores
 			competidores.add(competidor);

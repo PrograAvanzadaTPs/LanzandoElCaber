@@ -3,6 +3,7 @@ package src;
 import java.io.FileNotFoundException;
 import java.util.List;
 
+import dominio.Competencia;
 import dominio.Competidor;
 
 public class Main {
@@ -11,7 +12,8 @@ public class Main {
 	
 	public static void main(String[] args) throws FileNotFoundException {
 		ManejoArchivos manejo = new ManejoArchivos();
-		List <Competidor> comp = manejo.cargarArchivo("archivo.in");
+		Competencia comp = new Competencia(manejo.cargarArchivo("archivo.in"));
+		comp.calcularGanadores();
 	}
 
 }
