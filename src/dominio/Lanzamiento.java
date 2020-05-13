@@ -1,4 +1,4 @@
-package Dominio;
+package dominio;
 
 public class Lanzamiento {
 	
@@ -18,6 +18,14 @@ public class Lanzamiento {
 		if(Math.abs(this.angulo) > 30 && Math.abs(this.angulo) <= 90)
 			return 0.8;
 		return 0;
+	}
+	
+	public boolean esLanzamientoDescalificado() {
+		if(Math.abs(this.angulo) <= 30)
+			return true;
+		if(Math.abs(this.angulo) > 30 && Math.abs(this.angulo) <= 90)
+			return true;
+		return false;
 	}
 
 
