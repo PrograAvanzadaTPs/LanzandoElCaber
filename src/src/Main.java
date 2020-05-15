@@ -5,6 +5,7 @@ import java.util.List;
 
 import dominio.Competencia;
 import dominio.Competidor;
+import dominio.Podio;
 
 public class Main {
 	
@@ -13,7 +14,8 @@ public class Main {
 	public static void main(String[] args) throws FileNotFoundException {
 		ManejoArchivos manejo = new ManejoArchivos();
 		Competencia comp = new Competencia(manejo.cargarArchivo("archivo.in"));
-		comp.calcularGanadores();
+		Podio p = comp.calcularGanadores();
+		System.out.println(p);
 	}
 
 }

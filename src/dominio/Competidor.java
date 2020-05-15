@@ -8,6 +8,7 @@ public class Competidor implements Comparable<Competidor>{
 	private int nroCompetidor;
 	private List <Lanzamiento> lanzamientos;
 	private double distanciaTotalLanzamientos;
+	private Lanzamiento mayorDeltaLanzamiento;
 	
 	public Competidor(int nroCompetidor) {
 		super();
@@ -21,13 +22,30 @@ public class Competidor implements Comparable<Competidor>{
 			distanciaTotal += l.getDistancia() * l.getMultiploDistancia();
 		return distanciaTotal;
 	}
+	
+	public Lanzamiento obtenerDeltaLanzamientos() {
+		double menorDistancia = 0;
+		double mayorDistancia = 0;
+		double menorAngulo = 0;
+		double mayorAngulo = 0;
+		for(Lanzamiento l : lanzamientos) {
+			menorDistancia = l.getDistancia() < menorDistancia? l.getDistancia() : menorDistancia;
+			mayorDistancia = l.getDistancia() > mayorDistancia? l.getDistancia() : mayorDistancia;
+			menorAngulo = l.getAngulo() < menorAngulo? l.getAngulo() : menorAngulo;
+			mayorAngulo = l.getAngulo() > mayorAngulo? l.getAngulo() : mayorAngulo;
+		}
+		
+		return new Lanzamiento(mayorDistancia - menorDistancia, mayorAngulo - menorAngulo);
+		
+	}
 
 	
 	public boolean tieneLanzamientosDescalificados() {
-		Lanzamiento[] lanzamiento = (Lanzamiento[]) lanzamientos.toArray();
-		return lanzamiento[0].esLanzamientoDescalificado() ||
-				lanzamiento[1].esLanzamientoDescalificado() ||
-				lanzamiento[2].esLanzamientoDescalificado();
+		for(Lanzamiento l : lanzamientos) {
+			if(l.esLanzamientoDescalificado())
+				return true;
+		}
+		return false;
 		
 	}
 
@@ -46,6 +64,12 @@ public class Competidor implements Comparable<Competidor>{
 	public void setDistanciaTotalLanzamientos(double distanciaTotalLanzamientos) {
 		this.distanciaTotalLanzamientos = distanciaTotalLanzamientos;
 	}
+
+
+	public void setMayorDeltaLanzamiento(Lanzamiento mayorDeltaLanzamiento) {
+		this.mayorDeltaLanzamiento = mayorDeltaLanzamiento;
+	}
+	
 
 	@Override
 	public int hashCode() {
@@ -90,6 +114,10 @@ public class Competidor implements Comparable<Competidor>{
 			return 1;
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	public Lanzamiento getMayorDeltaLanzamiento() {
+		return mayorDeltaLanzamiento;
 	}
 	
 	

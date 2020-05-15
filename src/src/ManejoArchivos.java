@@ -33,6 +33,9 @@ public class ManejoArchivos {
 			competidor.addLanzamiento(lanzamiento2);
 			competidor.addLanzamiento(lanzamiento3);
 			
+			//... calculo el mayor delta de sus lanzamientos...
+			competidor.setMayorDeltaLanzamiento(competidor.obtenerDeltaLanzamientos());
+			
 			//... y calculo su distancia total alcanzada con los lanzamientos
 			competidor.setDistanciaTotalLanzamientos(competidor.obtenerDistanciaTotal());
 			
