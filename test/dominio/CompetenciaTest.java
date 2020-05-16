@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import src.ManejoArchivos;
 
-public class testCompetencia {
+public class CompetenciaTest {
 	
 	ManejoArchivos manejo;
 	Competencia comp;
@@ -25,6 +25,7 @@ public class testCompetencia {
 	public void testEnunciado() throws FileNotFoundException {
 		comp = new Competencia(manejo.cargarArchivo("ArchivosEntrada/testEnunciado.in"));
 		podio = comp.calcularGanadores();
+		manejo.guardarGanadores(podio, "ArchivosSalida/testEnunciado.out");
 		int[][] expected = {{1,2,0},{2,1,3}};
 		assertArrayEquals(expected, podio.getCompetidoresGanadores());
 		
@@ -34,6 +35,7 @@ public class testCompetencia {
 	public void testNoGanadoresConsistencia() throws FileNotFoundException {
 		comp = new Competencia(manejo.cargarArchivo("ArchivosEntrada/testNoGanadoresConsistencia.in"));
 		podio = comp.calcularGanadores();
+		manejo.guardarGanadores(podio, "ArchivosSalida/testNoGanadoresConsistencia.out");
 		int[][] expected = {{0,0,0},{2,3,1}};
 		assertArrayEquals(expected, podio.getCompetidoresGanadores());
 	}
@@ -42,6 +44,7 @@ public class testCompetencia {
 	public void testDesempateConsistencia() throws FileNotFoundException {
 		comp = new Competencia(manejo.cargarArchivo("ArchivosEntrada/testDesempateConsistencia.in"));
 		podio = comp.calcularGanadores();
+		manejo.guardarGanadores(podio, "ArchivosSalida/testDesempateConsistencia.out");
 		int[][] expected = {{1,2,0},{2,1,3}};
 		assertArrayEquals(expected, podio.getCompetidoresGanadores());
 	}

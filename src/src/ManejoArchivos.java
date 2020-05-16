@@ -55,12 +55,11 @@ public class ManejoArchivos {
 		try {
 			fichero = new FileWriter(pathArchivo);
 			pw = new PrintWriter(fichero);
-			for(Integer i : ganadores[0]) {
-				pw.println(ganadores[0][i]+"\t");
-			}
-			pw.println("\n");
-			for(Integer i : ganadores[1]) {
-				pw.println(ganadores[1][i]+"\t");
+			for(int i = 0; i < 2; i++) { 
+				for(int j = 0; j < 3 && ganadores[i][j] != 0; j++) {
+					pw.print(ganadores[i][j]+"  ");
+				}
+				pw.print("\n");
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
