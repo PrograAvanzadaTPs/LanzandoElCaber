@@ -13,9 +13,9 @@ public class Main {
 	
 	public static void main(String[] args) throws FileNotFoundException {
 		ManejoArchivos manejo = new ManejoArchivos();
-		Competencia comp = new Competencia(manejo.cargarArchivo("archivo.in"));
+		Competencia comp = new Competencia(manejo.cargarArchivo("ArchivosEntrada/testEnunciado.in"));
 		Podio p = comp.calcularGanadores();
-		System.out.println(p);
+		manejo.guardarGanadores(p, "ArchivosSalida/testEnunciado.out");
 	}
 
 }

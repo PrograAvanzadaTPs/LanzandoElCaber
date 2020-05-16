@@ -2,6 +2,8 @@ package src;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -46,8 +48,30 @@ public class ManejoArchivos {
 		return competidores;	
 	}
 	
-	public void guardarGanadores(Podio podio) {
-		
+	public void guardarGanadores(Podio podio, String pathArchivo) {
+		int[][] ganadores = podio.getCompetidoresGanadores();
+		FileWriter fichero = null;
+		PrintWriter pw = null;
+		try {
+			fichero = new FileWriter(pathArchivo);
+			pw = new PrintWriter(fichero);
+			for(Integer i : ganadores[0]) {
+				pw.println(ganadores[0][i]+"\t");
+			}
+			pw.println("\n");
+			for(Integer i : ganadores[1]) {
+				pw.println(ganadores[1][i]+"\t");
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			try {
+				if(null != fichero)
+					fichero.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
 	}
 
 }

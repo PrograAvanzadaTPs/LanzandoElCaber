@@ -24,9 +24,9 @@ public class Competidor implements Comparable<Competidor>{
 	}
 	
 	public Lanzamiento obtenerDeltaLanzamientos() {
-		double menorDistancia = 0;
-		double mayorDistancia = 0;
-		double menorAngulo = 0;
+		double menorDistancia = Double.MAX_VALUE;
+		double menorAngulo = Double.MAX_VALUE;
+		double mayorDistancia = 0;		
 		double mayorAngulo = 0;
 		for(Lanzamiento l : lanzamientos) {
 			menorDistancia = l.getDistancia() < menorDistancia? l.getDistancia() : menorDistancia;
@@ -35,11 +35,10 @@ public class Competidor implements Comparable<Competidor>{
 			mayorAngulo = l.getAngulo() > mayorAngulo? l.getAngulo() : mayorAngulo;
 		}
 		
-		return new Lanzamiento(mayorDistancia - menorDistancia, mayorAngulo - menorAngulo);
+		return new Lanzamiento(mayorDistancia - menorDistancia, Math.abs(mayorAngulo - menorAngulo));
 		
 	}
 
-	
 	public boolean tieneLanzamientosDescalificados() {
 		for(Lanzamiento l : lanzamientos) {
 			if(l.esLanzamientoDescalificado())
@@ -65,49 +64,16 @@ public class Competidor implements Comparable<Competidor>{
 		this.distanciaTotalLanzamientos = distanciaTotalLanzamientos;
 	}
 
-
 	public void setMayorDeltaLanzamiento(Lanzamiento mayorDeltaLanzamiento) {
 		this.mayorDeltaLanzamiento = mayorDeltaLanzamiento;
 	}
+
+	public Lanzamiento getMayorDeltaLanzamiento() {
+		return mayorDeltaLanzamiento;
+	}
 	
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		long temp;
-		temp = Double.doubleToLongBits(distanciaTotalLanzamientos);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((lanzamientos == null) ? 0 : lanzamientos.hashCode());
-		result = prime * result + nroCompetidor;
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Competidor other = (Competidor) obj;
-		if (Double.doubleToLongBits(distanciaTotalLanzamientos) != Double
-				.doubleToLongBits(other.distanciaTotalLanzamientos))
-			return false;
-		if (lanzamientos == null) {
-			if (other.lanzamientos != null)
-				return false;
-		} else if (!lanzamientos.equals(other.lanzamientos))
-			return false;
-		if (nroCompetidor != other.nroCompetidor)
-			return false;
-		return true;
-	}
-
 	@Override
 	public int compareTo(Competidor c) {
-	
 		if(this.distanciaTotalLanzamientos < c.distanciaTotalLanzamientos)
 			return -1;
 		if(this.distanciaTotalLanzamientos > c.distanciaTotalLanzamientos)
@@ -115,13 +81,6 @@ public class Competidor implements Comparable<Competidor>{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	public Lanzamiento getMayorDeltaLanzamiento() {
-		return mayorDeltaLanzamiento;
-	}
-	
-	
-	
 	
 
 }

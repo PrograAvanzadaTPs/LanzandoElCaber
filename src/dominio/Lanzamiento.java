@@ -27,6 +27,8 @@ public class Lanzamiento implements Comparable<Lanzamiento>{
 			return false;
 		return true;
 	}
+	
+	
 
 
 	public double getDistancia() {
@@ -36,6 +38,11 @@ public class Lanzamiento implements Comparable<Lanzamiento>{
 
 	public double getAngulo() {
 		return angulo;
+	}
+	
+	public double[] getValoresLanzamiento() {
+		double[] valores = {this.distancia, this.angulo};
+		return valores;
 	}
 
 	//Si hay uno que tiene mayor distancia y otro mayor ángulo,
