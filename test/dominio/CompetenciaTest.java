@@ -45,7 +45,16 @@ public class CompetenciaTest {
 		comp = new Competencia(manejo.cargarArchivo("ArchivosEntrada/testDesempateConsistencia.in"));
 		podio = comp.calcularGanadores();
 		manejo.guardarGanadores(podio, "ArchivosSalida/testDesempateConsistencia.out");
-		int[][] expected = {{1,2,0},{2,1,3}};
+		int[][] expected = {{2,3,0},{3,2,1}};
+		assertArrayEquals(expected, podio.getCompetidoresGanadores());
+	}
+	
+	@Test
+	public void testLanzamientosNulos() throws FileNotFoundException {
+		comp = new Competencia(manejo.cargarArchivo("ArchivosEntrada/testLanzamientosNulos.in"));
+		podio = comp.calcularGanadores();
+		manejo.guardarGanadores(podio, "ArchivosSalida/testLanzamientosNulos.out");
+		int[][] expected = {{0,0,0},{0,0,0}};
 		assertArrayEquals(expected, podio.getCompetidoresGanadores());
 	}
 

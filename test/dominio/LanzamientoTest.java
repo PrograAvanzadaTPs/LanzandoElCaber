@@ -41,15 +41,5 @@ public class LanzamientoTest {
 	public void testEsLanzamientoDescalificado() {
 		assertEquals(true, l3.esLanzamientoDescalificado());
 	}
-	
-	@Test
-	public void testCompareToMayor() {
-		assertEquals(1, l1.compareTo(l2));
-	}
-	
-	@Test
-	public void testCompareToMenor() {
-		assertEquals(-1, l2.compareTo(l1));
-	}
 
 }

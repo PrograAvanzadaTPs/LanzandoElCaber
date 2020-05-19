@@ -1,8 +1,6 @@
 package dominio;
 
-import java.util.Comparator;
-
-public class Lanzamiento implements Comparable<Lanzamiento>{
+public class Lanzamiento {
 	
 	private double distancia;
 	private double angulo;
@@ -27,9 +25,6 @@ public class Lanzamiento implements Comparable<Lanzamiento>{
 			return false;
 		return true;
 	}
-	
-	
-
 
 	public double getDistancia() {
 		return distancia;
@@ -45,18 +40,5 @@ public class Lanzamiento implements Comparable<Lanzamiento>{
 		return valores;
 	}
 
-	//Si hay uno que tiene mayor distancia y otro mayor ángulo,
-	//Desempata sólo con la distancia.
-	@Override
-	public int compareTo(Lanzamiento l) {
-		if(this.distancia < l.distancia && this.angulo < l.angulo)
-			return -1;
-		if(this.distancia > l.distancia && this.angulo > l.angulo)
-			return 1;
-		if(this.distancia < l.distancia)
-			return -1;
-		return 1;
-	}
-	
 
 }
