@@ -1,4 +1,4 @@
-package Dominio;
+package dominio;
 
 public class Lanzamiento {
 	
@@ -19,7 +19,12 @@ public class Lanzamiento {
 			return 0.8;
 		return 0;
 	}
-
+	
+	public boolean esLanzamientoDescalificado() {
+		if(Math.abs(this.angulo) <= 90)
+			return false;
+		return true;
+	}
 
 	public double getDistancia() {
 		return distancia;
@@ -30,7 +35,10 @@ public class Lanzamiento {
 		return angulo;
 	}
 	
-	
-	
+	public double[] getValoresLanzamiento() {
+		double[] valores = {this.distancia, this.angulo};
+		return valores;
+	}
+
 
 }

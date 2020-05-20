@@ -1,9 +1,11 @@
 package src;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
+import java.util.List;
 
-import Dominio.Competidor;
+import dominio.Competencia;
+import dominio.Competidor;
+import dominio.Podio;
 
 public class Main {
 	
@@ -11,8 +13,9 @@ public class Main {
 	
 	public static void main(String[] args) throws FileNotFoundException {
 		ManejoArchivos manejo = new ManejoArchivos();
-		ArrayList <Competidor> comp = manejo.cargarArchivo("archivo.in");
-
+		Competencia comp = new Competencia(manejo.cargarArchivo("ArchivosEntrada/testEnunciado.in"));
+		Podio p = comp.calcularGanadores();
+		manejo.guardarGanadores(p, "ArchivosSalida/testEnunciado.out");
 	}
 
 }
